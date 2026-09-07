@@ -17,6 +17,7 @@
         body { background-color: var(--fundo); color: var(--texto); font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
         h1, h2, .serif { font-family: 'Playfair Display', serif; }
 
+        /* ANIMAÇÃO DE ABERTURA */
         .preloader {
             position: fixed;
             top: 0;
@@ -48,6 +49,7 @@
             to { opacity: 0; visibility: hidden; }
         }
 
+        /* HEADER / HERO */
         .hero {
             height: 100vh;
             display: flex;
@@ -75,6 +77,7 @@
         }
         .btn-primario:hover { background-color: var(--rose); color: var(--fundo); }
 
+        /* VITRINE COM ÍCONES LUXUOSOS (SEM FUNDO) */
         .vitrine { padding: 100px 20px; text-align: center; }
         .vitrine h2 { font-size: 2rem; color: var(--dourado); margin-bottom: 60px; letter-spacing: 2px; }
         
@@ -86,7 +89,7 @@
             margin: 0 auto;
         }
         .card {
-            padding: 40px 20px;
+            padding: 50px 20px;
             border: 1px solid rgba(212, 175, 55, 0.15);
             background: linear-gradient(145deg, #0a0a0a, #030303);
             transition: all 0.5s;
@@ -98,18 +101,20 @@
         .card:hover { border-color: var(--dourado); transform: translateY(-10px); box-shadow: 0 10px 30px rgba(212, 175, 55, 0.05); }
         .card h3 { font-size: 1.2rem; letter-spacing: 4px; color: #fff; text-transform: uppercase; transition: color 0.3s; }
         .card:hover h3 { color: var(--rose); }
-        
-        .img-categoria {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 20px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
+
+        .icone-luxo {
+            width: 65px;
+            height: 65px;
+            margin-bottom: 25px;
+            color: var(--dourado);
             transition: all 0.5s;
         }
-        .card:hover .img-categoria { border-color: var(--rose); transform: scale(1.05); }
+        .card:hover .icone-luxo {
+            color: var(--rose);
+            transform: scale(1.1);
+        }
 
+        /* FOOTER */
         footer { padding: 80px 20px 20px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); position: relative; }
         footer p { font-weight: 200; color: #888; max-width: 600px; margin: 0 auto 30px auto; line-height: 1.8; }
         
@@ -155,6 +160,7 @@
 </head>
 <body>
 
+    <!-- TELA DE ANIMAÇÃO INICIAL -->
     <div class="preloader">
         <img src="Logo elas 4.jpeg" alt="Logo Elas 4" class="logo-preloader">
     </div>
@@ -169,16 +175,30 @@
     <section class="vitrine">
         <h2>Nossa Coleção</h2>
         <div class="grid">
+            <!-- Ícone de Brincos -->
             <a href="brincos.html" class="card">
-                <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=200&q=80" alt="Brincos" class="img-categoria">
+                <svg class="icone-luxo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                    <path d="M8 2v3M16 2v3" />
+                    <path d="M8 5l3 4-3 4-3-4 3-4zM16 5l3 4-3 4-3-4 3-4z" />
+                </svg>
                 <h3>Brincos</h3>
             </a>
+            
+            <!-- Ícone de Pulseiras -->
             <a href="pulseiras.html" class="card">
-                <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=200&q=80" alt="Pulseiras" class="img-categoria">
+                <svg class="icone-luxo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                    <ellipse cx="12" cy="12" rx="9" ry="5" />
+                    <ellipse cx="12" cy="12" rx="7" ry="3" stroke-dasharray="2 2" />
+                </svg>
                 <h3>Pulseiras</h3>
             </a>
+            
+            <!-- Ícone de Colares -->
             <a href="colares.html" class="card">
-                <img src="https://images.unsplash.com/photo-1599643478524-fb4662d512ee?w=200&q=80" alt="Colares" class="img-categoria">
+                <svg class="icone-luxo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                    <path d="M5 4c0 4 2 10 7 13 5-3 7-9 7-13" stroke-dasharray="2 2" />
+                    <path d="M12 17l2 3-2 2-2-2 2-3z" fill="currentColor" />
+                </svg>
                 <h3>Colares</h3>
             </a>
         </div>

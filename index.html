@@ -3,61 +3,318 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elas 4 Semijoias</title>
+    <title>Elas 4 Semijoias | Breve</title>
+    <!-- Fontes do Google (Elegantes) -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --cor-fundo: #0a0a0a;
+            --cor-texto: #ffffff;
+            --cor-destaque: #d4af37; /* Dourado */
+            --cor-rose: #e6b3b3; /* Rose Gold */
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            background-color: #050505; /* Fundo preto elegante */
-            color: #d4af37; /* Dourado */
-            font-family: 'Georgia', serif;
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* --- HEADER E HERO SECTION --- */
+        .hero {
+            height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
-            margin: 0;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(10,10,10,0.8), rgba(10,10,10,1)), url('https://images.unsplash.com/photo-1599643478524-fb4662d512ee?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat;
+            background-attachment: fixed;
+            padding: 20px;
+        }
+
+        .hero img {
+            max-width: 250px;
+            border-radius: 50%;
+            margin-bottom: 30px;
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.2);
+            animation: fadeInDown 1.5s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            letter-spacing: 4px;
+            color: var(--cor-rose);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            animation: fadeInUp 1.5s ease-out 0.5s both;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            color: var(--cor-destaque);
+            font-style: italic;
+            animation: fadeInUp 1.5s ease-out 1s both;
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 40px;
+            color: var(--cor-destaque);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: pulse 2s infinite;
+        }
+
+        /* --- SEÇÃO DE CATEGORIAS (O SEGREDO DA VITRINE) --- */
+        .categorias-section {
+            padding: 100px 20px;
             text-align: center;
         }
-        .logo-container img {
-            max-width: 300px;
-            border-radius: 50%; /* Deixa a logo com bordas suaves se precisar */
+
+        .categorias-section h2 {
+            font-size: 2.2rem;
+            color: var(--cor-destaque);
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        .categorias-section > p {
+            font-weight: 300;
+            margin-bottom: 60px;
+            color: #ccc;
+        }
+
+        .grid-categorias {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .categoria-card {
+            position: relative;
+            height: 350px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 4px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+
+        .categoria-card.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .categoria-card .bg-img {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.8s ease;
+            filter: brightness(0.6);
+        }
+
+        .categoria-card:hover .bg-img {
+            transform: scale(1.1);
+            filter: brightness(0.4);
+        }
+
+        .categoria-card .conteudo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .categoria-card h3 {
+            font-size: 1.8rem;
+            color: var(--cor-texto);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+
+        .categoria-card:hover h3 {
+            color: var(--cor-rose);
+        }
+
+        .categoria-card .linha {
+            width: 40px;
+            height: 2px;
+            background-color: var(--cor-destaque);
+            margin: 0 auto;
+            transition: width 0.4s;
+        }
+
+        .categoria-card:hover .linha {
+            width: 80px;
+        }
+
+        /* --- FOOTER CTA --- */
+        footer {
+            padding: 80px 20px;
+            text-align: center;
+            background-color: #050505;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        footer h3 {
+            color: var(--cor-rose);
+            font-size: 1.8rem;
             margin-bottom: 20px;
         }
-        h1 {
-            font-size: 2.5em;
-            letter-spacing: 5px;
-            margin-bottom: 10px;
-            color: #e6b3b3; /* Tom rose gold da logo */
-        }
-        p {
-            font-size: 1.2em;
-            font-style: italic;
+
+        footer p {
+            font-weight: 300;
+            color: #888;
             margin-bottom: 40px;
-            color: #d4af37;
         }
-        .breve {
-            font-family: 'Arial', sans-serif;
-            font-size: 0.9em;
+
+        .btn-exclusivo {
+            display: inline-block;
+            padding: 15px 40px;
+            border: 1px solid var(--cor-destaque);
+            color: var(--cor-destaque);
+            text-decoration: none;
             text-transform: uppercase;
             letter-spacing: 2px;
-            border: 1px solid #d4af37;
-            padding: 10px 20px;
-            border-radius: 5px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .btn-exclusivo:hover {
+            background-color: var(--cor-destaque);
+            color: var(--cor-fundo);
+        }
+
+        /* Animações */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { opacity: 0.5; }
         }
     </style>
 </head>
 <body>
 
-    <div class="logo-container">
-        <!-- Quando subirmos a imagem, ela vai aparecer aqui -->
+    <section class="hero">
         <img src="Logo elas 4.jpeg" alt="Logo Elas 4 Semijoias">
-    </div>
+        <h1>Elas 4</h1>
+        <p class="serif">Quatro irmãs, uma paixão por brilhar.</p>
+        <div class="scroll-down">Explore a Coleção</div>
+    </section>
 
-    <h1>ELAS 4</h1>
-    <p>Quatro irmãs, uma paixão por brilhar.</p>
-    
-    <div class="breve">
-        Nossa loja online está chegando...
-    </div>
+    <section class="categorias-section">
+        <h2>O Despertar da Beleza</h2>
+        <p>Preparamos uma seleção exclusiva que em breve estará disponível para você.</p>
+        
+        <div class="grid-categorias">
+            
+            <div class="categoria-card fade-element">
+                <div class="bg-img" style="background-image: url('https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=800&auto=format&fit=crop');"></div>
+                <div class="conteudo">
+                    <h3>Brincos</h3>
+                    <div class="linha"></div>
+                </div>
+            </div>
 
+            <div class="categoria-card fade-element">
+                <div class="bg-img" style="background-image: url('https://images.unsplash.com/photo-1611591437281-460bfbe1220a?q=80&w=800&auto=format&fit=crop');"></div>
+                <div class="conteudo">
+                    <h3>Pulseiras</h3>
+                    <div class="linha"></div>
+                </div>
+            </div>
+
+            <div class="categoria-card fade-element">
+                <div class="bg-img" style="background-image: url('https://images.unsplash.com/photo-1605100804763-247f67b2548e?q=80&w=800&auto=format&fit=crop');"></div>
+                <div class="conteudo">
+                    <h3>Anéis</h3>
+                    <div class="linha"></div>
+                </div>
+            </div>
+
+            <div class="categoria-card fade-element">
+                <div class="bg-img" style="background-image: url('https://images.unsplash.com/photo-1599643478524-fb4662d512ee?q=80&w=800&auto=format&fit=crop');"></div>
+                <div class="conteudo">
+                    <h3>Colares</h3>
+                    <div class="linha"></div>
+                </div>
+            </div>
+
+            <div class="categoria-card fade-element">
+                <div class="bg-img" style="background-image: url('https://images.unsplash.com/photo-1535632787350-4e68ef0ac584?q=80&w=800&auto=format&fit=crop');"></div>
+                <div class="conteudo">
+                    <h3>Piercings</h3>
+                    <div class="linha"></div>
+                </div>
+            </div>
+
+            <div class="categoria-card fade-element">
+                <div class="bg-img" style="background-image: url('https://images.unsplash.com/photo-1515562141207-7a8efb13280c?q=80&w=800&auto=format&fit=crop');"></div>
+                <div class="conteudo">
+                    <h3>Outros</h3>
+                    <div class="linha"></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <h3 class="serif">Aguarde o Lançamento</h3>
+        <p>Estamos preparando os últimos detalhes de peças escolhidas a dedo em São Paulo.</p>
+        <a href="#" class="btn-exclusivo">Em Breve</a>
+    </footer>
+
+    <!-- Script para animação ao rolar a tela -->
+    <script>
+        const observerOptions = {
+            threshold: 0.2
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-element').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>

@@ -14,8 +14,38 @@
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--fundo); color: var(--texto); font-family: 'Montserrat', sans-serif; }
+        body { background-color: var(--fundo); color: var(--texto); font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
         h1, h2, .serif { font-family: 'Playfair Display', serif; }
+
+        /* ANIMAÇÃO DE ABERTURA (PRE-LOADER) */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            animation: sumirTela 1s ease-in-out 2.5s forwards;
+        }
+        .preloader h2 {
+            font-size: 2.5rem;
+            letter-spacing: 12px;
+            color: var(--dourado);
+            text-transform: uppercase;
+            animation: pulsarLogo 1.5s infinite;
+        }
+        @keyframes pulsarLogo {
+            0% { opacity: 0.4; transform: scale(0.95); text-shadow: 0 0 10px rgba(212, 175, 55, 0); }
+            50% { opacity: 1; transform: scale(1.05); text-shadow: 0 0 20px rgba(212, 175, 55, 0.5); }
+            100% { opacity: 0.4; transform: scale(0.95); text-shadow: 0 0 10px rgba(212, 175, 55, 0); }
+        }
+        @keyframes sumirTela {
+            to { opacity: 0; visibility: hidden; }
+        }
 
         /* HEADER / HERO */
         .hero {
@@ -45,7 +75,7 @@
         }
         .btn-primario:hover { background-color: var(--rose); color: var(--fundo); }
 
-        /* CATEGORIAS LUXURY TEXT */
+        /* VITRINE */
         .vitrine { padding: 100px 20px; text-align: center; }
         .vitrine h2 { font-size: 2rem; color: var(--dourado); margin-bottom: 60px; letter-spacing: 2px; }
         
@@ -68,11 +98,58 @@
         .card:hover h3 { color: var(--rose); }
 
         /* FOOTER */
-        footer { padding: 80px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); }
+        footer { padding: 80px 20px 20px 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); position: relative; }
         footer p { font-weight: 200; color: #888; max-width: 600px; margin: 0 auto 30px auto; line-height: 1.8; }
+        
+        /* Redes Sociais / Contato */
+        .redes-contatos { margin-bottom: 40px; }
+        .redes-contatos a {
+            display: inline-block;
+            margin: 0 10px;
+            padding: 10px 20px;
+            border: 1px solid #333;
+            color: #aaa;
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s;
+        }
+        .redes-contatos a:hover { border-color: var(--dourado); color: var(--dourado); }
+
+        /* Direitos e Assinatura */
+        .rodape-inferior {
+            position: relative;
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.02);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .copyright { font-size: 0.75rem; color: #555; letter-spacing: 1px; }
+        .assinatura-dev {
+            position: absolute;
+            right: 10px;
+            font-size: 0.55rem;
+            color: #333;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Responsividade para celular */
+        @media (max-width: 768px) {
+            .rodape-inferior { flex-direction: column; }
+            .assinatura-dev { position: static; margin-top: 15px; }
+        }
     </style>
 </head>
 <body>
+
+    <!-- TELA DE ANIMAÇÃO INICIAL -->
+    <div class="preloader">
+        <h2 class="serif">Elas 4</h2>
+    </div>
 
     <section class="hero">
         <img src="Logo elas 4.jpeg" alt="Logo Elas 4 Semijoias">
@@ -94,7 +171,19 @@
 
     <footer>
         <p>Estamos preparando os últimos detalhes de peças escolhidas a dedo pela nossa família, para entregar a você a melhor qualidade com valores justos.</p>
-        <p style="font-size: 0.8rem; letter-spacing: 2px; color: var(--dourado);">EM BREVE</p>
+        <p style="font-size: 0.8rem; letter-spacing: 2px; color: var(--dourado); margin-bottom: 40px;">EM BREVE</p>
+        
+        <div class="redes-contatos">
+            <!-- Basta colocar o link do instagram entre as aspas do href abaixo -->
+            <a href="#" target="_blank">Instagram</a>
+            <!-- Basta colocar o numero do whatsapp com 55 e o DDD entre as aspas do href abaixo (ex: 556299999999) -->
+            <a href="https://wa.me/SEUNUMERO" target="_blank">WhatsApp</a>
+        </div>
+
+        <div class="rodape-inferior">
+            <div class="copyright">&copy; 2026 elas4.com.br. Todos os direitos reservados.</div>
+            <div class="assinatura-dev">Desenvolvido por Gustavo Alves</div>
+        </div>
     </footer>
 
 </body>
